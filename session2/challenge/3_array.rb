@@ -7,5 +7,8 @@
 
 class String
   def every_other_char
+    arr = []
+    each_char.select.with_index { |c, i| arr << c if i%2 == 0 }
+    arr.join
   end
 end
