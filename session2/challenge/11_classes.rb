@@ -18,3 +18,42 @@
 # if the parameter is greater than 99, set the number of beer bottles to 99
 # Then make a public method called print_song that outputs all stanzas from the number of bottles of beer down to zero.
 # Add any additional methods you find helpful.
+require 'humanize'
+class BeerSong
+  attr_accessor :bottles
+
+  def initialize(bottles)
+    @bottles = bottles
+  end
+
+  def print_song
+    self.check_bottles(@bottles)
+
+    while self.bottles > 0
+      if self.bottles != 1
+        puts "#{@bottles.humanize.capitalize} bottles of beer on the wall,"
+        puts "#{@bottles.humanize.capitalize} bottles of beer,"
+        print @bottles
+        puts "Take one down, pass it around,"
+        @bottles -= 1
+        puts "#{@bottles.humanize.capitalize} bottles of beer on the wall."
+      else
+        puts "#{@bottles.humanize.capitalize} bottle of beer on the wall,"
+        puts "#{@bottles.humanize.capitalize} bottle of beer,"
+        puts "Take one down, pass it around,"
+        @bottles -= 1
+        puts "#{@bottles.humanize.capitalize} bottles of beer on the wall."
+      end
+    end
+  end
+
+  def check_bottles(bottles)
+    if bottles < 0
+      @bottles = 0
+    elsif bottles > 99
+      @bottles = 99
+    else
+      @bottles = bottles
+    end
+  end
+end
