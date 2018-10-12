@@ -7,4 +7,10 @@
 # staircase 3  # => {1 => [], 3 => [2]}
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
-
+def staircase(number)
+  num_arr = Array.new(number, 0)
+  num_arr = num_arr.map.with_index { |num, i| num = i + 1 }
+  h = {}
+  num_arr.select { |num| h[num] = num_arr.select { |x| x < num && x%2 == 0 } if num%2 != 0 }
+  h
+end
