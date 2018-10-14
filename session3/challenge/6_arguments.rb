@@ -16,4 +16,15 @@
 # match_maker true,  true,  true, false, nil    # => [false, false]
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
-
+def match_maker(*args)
+  standard = args.shift
+  booled_args = args.map { |x| true&(x) }
+  pairs_arr = booled_args.each_slice(2).to_a
+  true_arr = pairs_arr.map { |pair| pair[0] != pair[1] }
+  false_arr = pairs_arr.map { |pair| pair[0] == pair[1] }
+  if standard
+    true_arr
+  else
+    false_arr
+  end
+end
