@@ -25,5 +25,11 @@
 #   The method then returns 45
 #
 
-def passthrough
+def passthrough(range, value, &block)
+  v = value
+  range.each do |element|
+    x = block.call(v, element)
+    v = x
+  end
+  v
 end

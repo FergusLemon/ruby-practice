@@ -8,5 +8,10 @@
 # first_object nil, 1, 2      # => 1
 # first_object nil, nil, nil  # => nil
 
-def first_object
+def first_object(a, b, c)
+  if a || b || c
+    a || b || c
+  else
+    nil
+  end
 end

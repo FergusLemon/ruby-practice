@@ -13,5 +13,18 @@
 #
 # line_sums('nums.txt')   # =>   808 + 919 + 822 + 876 + 974   # =>   4399
 
-def line_sums
+def line_sums(filename)
+  content = File.readlines(filename)
+  sum = 0
+  num_arr = []
+  content.each do |line|
+    string_arr = line.split()
+    string_arr.each do |string|
+      num_arr << string.to_i
+    end
+    largest_num = num_arr.sort.pop
+    sum += largest_num
+    num_arr =[]
+  end
+  sum
 end
