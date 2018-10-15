@@ -30,5 +30,11 @@
 # end
 
 
-def array_init
+def array_init(arg = 5, &block)
+  if block_given?
+    to_return = Array.new(arg) { |element| block.call element }
+  else
+    to_return = Array.new(arg) { |i| (i*100).to_s }
+  end
+  to_return
 end
