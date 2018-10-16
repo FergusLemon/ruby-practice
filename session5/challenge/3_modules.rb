@@ -22,3 +22,38 @@
 # ff.max                        # => 5
 # ff.min                        # => 1
 # ff.select { |num| num.odd? }  # => [1, 5, 3]
+class List
+  include Enumerable
+
+  attr_accessor :first, :last
+
+  class Node
+    attr_accessor :data, :link
+
+    def initialize(data, link)
+      @data = data
+      @link = link
+    end
+  end
+
+  def initialize(first=nil, last=nil)
+    @first = first
+    @last = last
+  end
+
+  def <<(element)
+    node = Node.new(element, nil)
+    @last.link = node if @last
+    @last = node
+    @first ||= @last
+    self
+  end
+
+  def each(&block)
+    latest = @first
+    while latest
+      block.call latest.data
+      latest = latest.link
+    end
+  end
+end
