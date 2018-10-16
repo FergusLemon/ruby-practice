@@ -25,7 +25,15 @@
 # HINT: 
 #   The concat method will do the same thing as the << method
 
-class ApplicationController  
+class ApplicationController
   def body_class
+    return @body_class if @body_class
+    @body_class = String.new
+
+    def body_class.<<(str)
+      self.concat(" ") if self.length != 0
+      self.concat(str)
+    end
+    @body_class
   end
 end

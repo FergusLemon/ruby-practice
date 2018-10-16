@@ -12,3 +12,18 @@
 #   exception_raiser 3   # =>   #<Exception: No 3s allowed!>
 #   exception_raiser 4   # =>   #<SyntaxError: No 4s allowed!>
 #   exception_raiser 5   # =>   #<RubyKickstartException: No 5s allowed!>
+class RubyKickstartException < Exception
+end
+def exception_raiser(number)
+  if number == 1
+    raise "No 1s allowed!"
+  elsif number == 2
+    raise ArgumentError, "No 2s allowed!"
+  elsif number == 3
+    raise  Exception, "No 3s allowed!"
+  elsif number == 4
+    raise  SyntaxError, "No 4s allowed!"
+  elsif number == 5
+    raise  RubyKickstartException, "No 5s allowed!"
+  end
+end
