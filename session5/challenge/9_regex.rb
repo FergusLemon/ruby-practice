@@ -54,8 +54,6 @@ def trees_to_html(trees)
            <td>#{size}</td>
            <td>#{price}</td>
          <tr>"
-         p type
-         p size
   end
 
   to_return << '
