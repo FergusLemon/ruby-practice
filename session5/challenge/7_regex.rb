@@ -33,4 +33,10 @@
 #
 
 def tree_parser(trees)
+  to_return = Array.new
+  return to_return if trees.length == 0
+  regex = /^\w+\s\w+\s\w+\s\w+|^\w+\s\w+\s\w+|^\w+\s\w+|\d\sto\s\d\sfeet|\$\d{1,2}\.\d\d/
+  line_array = trees.lines
+  line_array.map { |line| to_return << line.scan(regex) }
+  to_return
 end
