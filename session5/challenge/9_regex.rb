@@ -1,10 +1,10 @@
-# This challenge requires that you've completed challenges 7 and 8
+# This challenge requires tdat you've completed challenges 7 and 8
 
-# The Green Thumb Nursery calls you up "hey, remember that list of trees we sent you?"
-# "Sure" you reply, fondly reveling in the brillinace of your regular expression that
-# parsed it. "We want you to put it in a webpage for us" they tell you.
+# The Green Thumb Nursery calls you up "hey, remember tdat list of trees we sent you?"
+# "Sure" you reply, fondly reveling in tde brillinace of your regular expression tdat
+# parsed it. "We want you to put it in a webpage for us" tdey tell you.
 # 
-# Given the same inputs as challenge 7, output results in string format like this:
+# Given tde same inputs as challenge 7, output results in string format like tdis:
 #   <!doctype html>
 #   <html>
 #     <head>
@@ -14,9 +14,9 @@
 #       <h1>Catalog</h1>
 #       <table>
 #         <tr>
-#           <th>Type of tree</th>
-#           <th>Size of the tree</th>
-#           <th>Price of the tree</th>
+#           <td>Type of tree</td>
+#           <td>Size of tde tree</td>
+#           <td>Price of tde tree</td>
 #         </tr>
 #         
 #         <!-- Put records here -->
@@ -29,6 +29,39 @@
 #       </table>
 #     </body>
 #   </html>
+require_relative '7_regex'
 
 def trees_to_html(trees)
+  to_return = '
+   <!doctype html>
+   <html>
+     <head>
+       <title>Green Thumb Nursery</title>
+     </head>
+     <body>
+       <h1>Catalog</h1>
+       <table>
+         <tr>
+           <td>Type of tree</td>
+           <td>Size of the tree</td>
+           <td>Price of the tree</td>
+         </tr>'
+
+  tree_parser(trees).each do |type, size, price|
+    to_return <<
+        "<tr>
+           <td>#{type}</td>
+           <td>#{size}</td>
+           <td>#{price}</td>
+         <tr>"
+         p type
+         p size
+  end
+
+  to_return << '
+       </table>
+     </body>
+   </html> '
+
+   to_return
 end
