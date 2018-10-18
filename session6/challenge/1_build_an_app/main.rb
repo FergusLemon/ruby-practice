@@ -1,4 +1,5 @@
 require 'sinatra'
+require File.dirname(__FILE__)+'/lib/caesar_cipher'
 
 get '/' do
   redirect '/encrypt'
@@ -10,6 +11,7 @@ end
 
 post '/encrypted' do
   @message = params[:message]
+  @encrypted = CaesarCipher.encrypt(@message)
   erb :encrypted
 end
 
@@ -19,5 +21,6 @@ end
 
 post '/decrypted' do
   @encrypted_message = params[:encrypted_message]
+  @decrypted = CaesarCipher.decrypt(@encrypted_message)
   erb :decrypted
 end
