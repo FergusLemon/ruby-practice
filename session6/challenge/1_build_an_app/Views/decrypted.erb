@@ -1,0 +1,7 @@
+<p>
+<% result = String.new %>
+<% @encrypted_message.each_char do |char| %>
+  <% result << (char.ord - 3).chr %>
+<% end %>
+<%= result %>
+</p>

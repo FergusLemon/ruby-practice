@@ -9,7 +9,8 @@ get '/encrypt' do
 end
 
 post '/encrypted' do
-  params[:message]
+  @message = params[:message]
+  erb :encrypted
 end
 
 get '/decrypt' do
@@ -17,5 +18,6 @@ get '/decrypt' do
 end
 
 post '/decrypted' do
-  params[:encrypted_message]
+  @encrypted_message = params[:encrypted_message]
+  erb :decrypted
 end
